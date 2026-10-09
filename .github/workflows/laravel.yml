@@ -11,6 +11,8 @@ jobs:
     with:
       php-version: 8.5
       php-extensions: "[ 'imagick' ]"
+      generate-key: false
+      test-command: "./vendor/bin/phpunit"
   static-analysis:
     uses: etsvThor/github-actions/.github/workflows/laravel-static-analysis.yml@master
     with:
@@ -21,3 +23,4 @@ jobs:
     with:
       php-version: 8.5
       php-extensions: "[ 'imagick' ]"
+      analysis-command: './vendor/bin/php-cs-fixer fix src --dry-run --diff'
