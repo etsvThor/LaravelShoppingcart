@@ -443,9 +443,10 @@ class CartItem implements Arrayable, Jsonable
         switch ($attribute) {
             case 'model':
                 if (isset($this->associatedModel)) {
+                    // Not method_exists(): Eloquent forwards find() to the query builder through __call()
                     $model = new $this->associatedModel();
 
-                    return method_exists($model, 'find') ? $model->find($this->id) : null;
+                    return is_callable([$model, 'find']) ? $model->find($this->id) : null;
                 }
                 // no break
             case 'modelFQCN':
