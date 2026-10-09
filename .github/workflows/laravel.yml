@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  workflow_dispatch: # allow manual trigger
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  tests:
+    uses: etsvThor/github-actions/.github/workflows/laravel-tests.yml@master
+    with:
+      php-version: 8.5
+      php-extensions: "[ 'imagick' ]"
+  static-analysis:
+    uses: etsvThor/github-actions/.github/workflows/laravel-static-analysis.yml@master
+    with:
+      php-version: 8.5
+      php-extensions: "[ 'imagick' ]"
+  code-style:
+    uses: etsvThor/github-actions/.github/workflows/laravel-code-style.yml@master
+    with:
+      php-version: 8.5
+      php-extensions: "[ 'imagick' ]"

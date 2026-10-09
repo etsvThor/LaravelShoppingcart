@@ -4,9 +4,9 @@ namespace Gloudemans\Tests\Shoppingcart\Fixtures;
 
 class ProductModel
 {
-    public $someValue = 'Some value';
+    public string $someValue = 'Some value';
 
-    public function find($id)
+    public function find(int | string $id): static
     {
         return $this;
     }

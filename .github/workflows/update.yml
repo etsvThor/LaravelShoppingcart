@@ -1,0 +1,14 @@
+name: "Composer auto-update"
+
+on:
+  workflow_dispatch: # allow manual trigger
+  schedule:
+    - cron: '0 3 1 * *' # UTC, 3:00 on first of the month
+
+jobs:
+  update:
+    uses: etsvThor/github-actions/.github/workflows/composer-update.yml@master
+    with:
+      php-version: 8.5
+      php-extensions: "[ 'imagick' ]"
+    secrets: inherit
