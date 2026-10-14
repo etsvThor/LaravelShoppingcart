@@ -12,7 +12,7 @@ class BuyableProductTrait extends Model implements Buyable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var list<string>
      */
     protected $fillable = [
         'id',
@@ -24,9 +24,9 @@ class BuyableProductTrait extends Model implements Buyable
     ];
 
     protected $attributes = [
-        'id'     => 1,
-        'name'   => 'Item name',
-        'price'  => 10.00,
+        'id' => 1,
+        'name' => 'Item name',
+        'price' => 10.00,
         'weight' => 0,
     ];
 }

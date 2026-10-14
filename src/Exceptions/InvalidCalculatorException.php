@@ -4,6 +4,4 @@ namespace Gloudemans\Shoppingcart\Exceptions;
 
 use RuntimeException;
 
-class InvalidCalculatorException extends RuntimeException
-{
-}
+class InvalidCalculatorException extends RuntimeException {}

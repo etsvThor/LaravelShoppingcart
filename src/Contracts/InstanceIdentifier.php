@@ -6,15 +6,11 @@ interface InstanceIdentifier
 {
     /**
      * Get the unique identifier to load the Cart from.
-     *
-     * @return int|string
      */
-    public function getInstanceIdentifier($options = null);
+    public function getInstanceIdentifier(mixed $options = null): int | string;
 
     /**
-     * Get the unique identifier to load the Cart from.
-     *
-     * @return int|string
+     * Get the global discount percentage for the Cart instance.
      */
-    public function getInstanceGlobalDiscount($options = null);
+    public function getInstanceGlobalDiscount(mixed $options = null): float | int;
 }

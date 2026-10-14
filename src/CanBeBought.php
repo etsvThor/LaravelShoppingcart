@@ -7,56 +7,40 @@ trait CanBeBought
     /**
      * Get the identifier of the Buyable item.
      *
-     * @return int|string
+     * @param \Gloudemans\Shoppingcart\CartItemOptions|array<string, mixed>|null $options
      */
-    public function getBuyableIdentifier($options = null)
+    public function getBuyableIdentifier(CartItemOptions | array | null $options = null): int | string
     {
-        return method_exists($this, 'getKey') ? $this->getKey() : $this->id;
+        return $this->getKey();
     }
 
     /**
      * Get the name, title or description of the Buyable item.
      *
-     * @return string
+     * @param \Gloudemans\Shoppingcart\CartItemOptions|array<string, mixed>|null $options
      */
-    public function getBuyableDescription($options = null)
+    public function getBuyableDescription(CartItemOptions | array | null $options = null): string
     {
-        if (($name = $this->getAttribute('name'))) {
-            return $name;
-        }
-
-        if (($title = $this->getAttribute('title'))) {
-            return $title;
-        }
-
-        if (($description = $this->getAttribute('description'))) {
-            return $description;
-        }
+        return (string) ($this->getAttribute('name') ?: $this->getAttribute('title') ?: $this->getAttribute('description'));
     }
 
     /**
      * Get the price of the Buyable item.
      *
-     * @return float
+     * @param \Gloudemans\Shoppingcart\CartItemOptions|array<string, mixed>|null $options
      */
-    public function getBuyablePrice($options = null)
+    public function getBuyablePrice(CartItemOptions | array | null $options = null): float
     {
-        if (($price = $this->getAttribute('price'))) {
-            return $price;
-        }
+        return (float) $this->getAttribute('price');
     }
 
     /**
      * Get the weight of the Buyable item.
      *
-     * @return float
+     * @param \Gloudemans\Shoppingcart\CartItemOptions|array<string, mixed>|null $options
      */
-    public function getBuyableWeight($options = null)
+    public function getBuyableWeight(CartItemOptions | array | null $options = null): float
     {
-        if (($weight = $this->getAttribute('weight'))) {
-            return $weight;
-        }
-
-        return 0;
+        return (float) $this->getAttribute('weight');
     }
 }

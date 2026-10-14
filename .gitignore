@@ -2,5 +2,9 @@
 composer.phar
 composer.lock
 .DS_Store
+.env
+.idea
 coverage.xml
+.php-cs-fixer.cache
+.phpunit.cache
 .phpunit.result.cache

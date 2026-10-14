@@ -2,15 +2,22 @@
 
 namespace Gloudemans\Tests\Shoppingcart\Fixtures;
 
+use Gloudemans\Shoppingcart\CartItemOptions;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property float $price
+ * @property float $weight
+ */
 class BuyableProduct extends Model implements Buyable
 {
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var list<string>
      */
     protected $fillable = [
         'id',
@@ -22,48 +29,28 @@ class BuyableProduct extends Model implements Buyable
     ];
 
     protected $attributes = [
-        'id'     => 1,
-        'name'   => 'Item name',
-        'price'  => 10.00,
+        'id' => 1,
+        'name' => 'Item name',
+        'price' => 10.00,
         'weight' => 0,
     ];
 
-    /**
-     * Get the identifier of the Buyable item.
-     *
-     * @return int|string
-     */
-    public function getBuyableIdentifier($options = null)
+    public function getBuyableIdentifier(CartItemOptions | array | null $options = null): int | string
     {
         return $this->id;
     }
 
-    /**
-     * Get the description or title of the Buyable item.
-     *
-     * @return string
-     */
-    public function getBuyableDescription($options = null)
+    public function getBuyableDescription(CartItemOptions | array | null $options = null): string
     {
         return $this->name;
     }
 
-    /**
-     * Get the price of the Buyable item.
-     *
-     * @return float
-     */
-    public function getBuyablePrice($options = null)
+    public function getBuyablePrice(CartItemOptions | array | null $options = null): float
     {
         return $this->price;
     }
 
-    /**
-     * Get the price of the Buyable item.
-     *
-     * @return float
-     */
-    public function getBuyableWeight($options = null)
+    public function getBuyableWeight(CartItemOptions | array | null $options = null): float
     {
         return $this->weight;
     }
